@@ -1,0 +1,17 @@
+{
+	"name": "vladahejda/deployer",
+	"description": "Tool for deploying app to FTP",
+	"require": {
+		"php-64bit": "^8.1",
+		"ext-ftp": "*"
+	},
+	"require-dev": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Deployer\\": [
+				"src"
+			]
+		}
+	}
+}
