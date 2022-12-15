@@ -12,8 +12,12 @@ use function sprintf;
 class Deployment
 {
 
-	private readonly string $localRootDir;
-	private readonly string $remoteRootParentDir;
+	private RemoteHandler $remoteHandler;
+	private string $remoteProductionDirName;
+	private Output $output;
+
+	private string $localRootDir;
+	private string $remoteRootParentDir;
 
 	private string $revisionName = 'new';
 	private string $oldRevisionName = 'old';
@@ -24,13 +28,17 @@ class Deployment
 	private ?string $revisionDir = null;
 
 	public function __construct(
-		private readonly RemoteHandler $remoteHandler,
+		RemoteHandler $remoteHandler,
 		string $localRootDir,
 		string $remoteRootParentDir,
-		private readonly string $remoteProductionDirName,
-		private readonly Output $output = new NullOutput(),
+		string $remoteProductionDirName,
+		Output $output = null
 	)
 	{
+		$this->remoteHandler = $remoteHandler;
+		$this->remoteProductionDirName = $remoteProductionDirName;
+		$this->output = $output ?? new NullOutput();
+
 		$localRootDir = rtrim($localRootDir, '/\\');
 		$remoteRootParentDir = rtrim($remoteRootParentDir, '/\\');
 		$this->localRootDir = $localRootDir !== '' ? $localRootDir : '/';

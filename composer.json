@@ -2,7 +2,7 @@
 	"name": "vladahejda/deployer",
 	"description": "Tool for deploying app to FTP",
 	"require": {
-		"php-64bit": "^8.1",
+		"php-64bit": "^7.4",
 		"ext-ftp": "*"
 	},
 	"require-dev": {

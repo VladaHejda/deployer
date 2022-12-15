@@ -5,12 +5,19 @@ namespace Deployer;
 class RemoteHandlerItem
 {
 
+	public string $name;
+	public string $path;
+	public bool $isDir;
+
 	public function __construct(
-		public readonly string $name,
-		public readonly string $path,
-		public readonly bool $isDir,
+		string $name,
+		string $path,
+		bool $isDir
 	)
 	{
+		$this->name = $name;
+		$this->path = $path;
+		$this->isDir = $isDir;
 	}
 
 }

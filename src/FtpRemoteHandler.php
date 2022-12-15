@@ -2,7 +2,6 @@
 
 namespace Deployer;
 
-use FTP\Connection;
 use function array_filter;
 use function count;
 use function ftp_connect;
@@ -12,14 +11,13 @@ use function ftp_put;
 use function ftp_rename;
 use function ftp_rmdir;
 use function implode;
-use function in_array;
 use function preg_split;
 use function sprintf;
 
 class FtpRemoteHandler implements RemoteHandler
 {
 
-	private readonly Connection $connection;
+	private $connection;
 
 	/**
 	 * @throws RemoteHandlerException
@@ -27,7 +25,7 @@ class FtpRemoteHandler implements RemoteHandler
 	public function __construct(
 		string $host,
 		?string $user = null,
-		?string $password = null,
+		?string $password = null
 	)
 	{
 		$connection = ftp_connect($host);
